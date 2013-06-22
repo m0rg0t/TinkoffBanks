@@ -80,5 +80,10 @@ namespace TinkoffBanks
                     }
                 }));
         }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModelLocator.MainStatic.LoadRecords();
+        }
     }
 }

@@ -9,41 +9,103 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    xmlns:telerikData="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Data"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerikCore="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    DataContext="{Binding Main, Source={StaticResource Locator}}"
-    shell:SystemTray.IsVisible="False">
+    DataContext="{Binding Main, Source={StaticResource Locator}}"    
+    shell:SystemTray.IsVisible="False" Loaded="PhoneApplicationPage_Loaded">
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator IsIndeterminate="true" IsVisible="{Binding Loading}" Text="Загрузка" />
+    </shell:SystemTray.ProgressIndicator>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Mode="Minimized">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="RateAppMenuItem" Text="Оценить приложение"/>
+                <shell:ApplicationBarMenuItem x:Name="PrivacyPolicyMenuItem" Text="Политика конфиденциальности"/>
+                <shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Text="Настройки"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
  
         <!--Panorama control-->
-        <controls:Panorama Title="TinkoffBank">
- 
-            <!--Panorama item one-->
-            <controls:PanoramaItem Header="Меню">
+        <controls:Panorama>
+            <controls:Panorama.Title>
+                <TextBlock Text="Банковские отзывы" Margin="15,90,0,0" FontSize="90"/>
+            </controls:Panorama.Title>
+
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.Header>
+                    <Border  Margin="-12,0,0,0">
+                        <TextBlock Text="Меню" FontSize="60" Margin="15,-15,0,0"/>
+                    </Border>
+                </controls:PanoramaItem.Header>
+                <Grid Margin="10,-10,10,0">
+                    <telerikPrimitives:RadWrapPanel x:Name="MenuPanel">
+                        <telerikPrimitives:RadHubTile Title="Карта" ImageSource="/Images/map2.png" Name="BanksMap"/>
+                        <telerikPrimitives:RadHubTile Title="AR" ImageSource="/Images/map2.png" Name="BanksARMap"/>
+                        <telerikPrimitives:RadHubTile Title="Добавить отзыв" ImageSource="/Images/add.png" Name="AddReview"/>
+                        <telerikPrimitives:RadHubTile Title="Новости" ImageSource="/Images/news1.png" Name="NewsList" Tap="NewsList_Tap"/>                       
+                    </telerikPrimitives:RadWrapPanel>
+                </Grid>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.Header>
+                    <Border  Margin="-12,0,0,0">
+                        <TextBlock Text="Новости" FontSize="60" Margin="15,-15,0,0"/>
+                    </Border>
+                </controls:PanoramaItem.Header>
+                <telerikData:RadJumpList 
+                Margin="0,0,0,0" Width="Auto"                
+                x:Name="NewsListRad" 
+                ItemTap="NewsListRad_ItemTap"
+                ItemsSource="{Binding Path=News.NewItems}"
+                DataContext="{Binding Main, Source={StaticResource Locator}}" 
+                HorizontalContentAlignment="Left" HorizontalAlignment="Left">
+                    <telerikData:RadJumpList.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="15,20,0,0" Width="Auto">
+                                <Grid.ColumnDefinitions>
+                                    <!--<ColumnDefinition Width="109"/>-->
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
+                                <StackPanel Grid.Column="1" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </telerikData:RadJumpList.ItemTemplate>
+                </telerikData:RadJumpList>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.Header>
+                    <Border  Margin="-12,0,0,0">
+                        <TextBlock Text="Свежие твиты" FontSize="60" Margin="15,-15,0,0"/>
+                    </Border>
+                </controls:PanoramaItem.Header>
                 <ListBox Margin="0,0,-12,0" 
                          ItemsSource="{Binding Path=Items}"
                          DataContext="{Binding Main, Source={StaticResource Locator}}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                                <!--Replace rectangle with image-->
-                                <Rectangle Height="100" Width="100" Fill="#FFE5001b" Margin="12,0,9,0"/>
-                                <StackPanel Width="311">
+                                <StackPanel Margin="5,8,0,17">
                                     <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
                                 </StackPanel>
-                            </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
             </controls:PanoramaItem>
- 
-            <!--Panorama item two-->
-            <!--Use 'Orientation="Horizontal"' to enable a panel that lays out horizontally-->
-            <controls:PanoramaItem Header="second item">
-            </controls:PanoramaItem>
+
         </controls:Panorama>
     </Grid>
 </phone:PhoneApplicationPage>

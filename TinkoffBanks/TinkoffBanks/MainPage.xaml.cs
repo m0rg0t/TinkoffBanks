@@ -30,18 +30,51 @@ namespace TinkoffBanks
         // Load data for the ViewModel Items
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModelLocator.MainStatic.LoadRecords();
+            try
+            {
+                if (NavigationService.CanGoBack)
+                {
+                    while (NavigationService.RemoveBackEntry() != null)
+                    {
+                        NavigationService.RemoveBackEntry();
+                    };
+                };
+            }
+            catch { };
         }
 
         private void authButton_Click(object sender, RoutedEventArgs e)
         {
-
-
             try
             {
                 //NavigationService.Navigate(new Uri("/Pages/TwitterLogin.xaml", UriKind.Relative));
             }
             catch { };
+        }
+
+
+        private void NewsList_Tap(object sender, GestureEventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new Uri("/NewsListPage.xaml", UriKind.Relative));
+            }
+            catch { };
+        }
+
+        private void NewsListRad_ItemTap(object sender, Telerik.Windows.Controls.ListBoxItemTapEventArgs e)
+        {
+            try
+            {
+                ViewModelLocator.MainStatic.News.CurrentNews = (NewsViewModel)NewsListRad.SelectedItem;
+                NavigationService.Navigate(new Uri("/NewsPage.xaml", UriKind.Relative));
+            }
+            catch { };
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModelLocator.MainStatic.News.LoadNews();
         }
 
     }
