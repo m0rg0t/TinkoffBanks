@@ -85,5 +85,28 @@ namespace TinkoffBanks
         {
             ViewModelLocator.MainStatic.LoadRecords();
         }
+
+        private void AuthorizeButton_Click(object sender, EventArgs e)
+        {
+            pinAuth.CompleteAuthorize(
+                PinTextBox.Text,
+                completeResp => Dispatcher.BeginInvoke(() =>
+                {
+                    switch (completeResp.Status)
+                    {
+                        case TwitterErrorStatus.Success:
+                            SharedState.Authorizer = pinAuth;
+                            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                            break;
+                        case TwitterErrorStatus.TwitterApiError:
+                        case TwitterErrorStatus.RequestProcessingException:
+                            MessageBox.Show(
+                                completeResp.Exception.ToString(),
+                                completeResp.Message,
+                                MessageBoxButton.OK);
+                            break;
+                    }
+                }));
+        }
     }
 }

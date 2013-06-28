@@ -28,6 +28,7 @@
                 <shell:ApplicationBarMenuItem x:Name="RateAppMenuItem" Text="Оценить приложение"/>
                 <shell:ApplicationBarMenuItem x:Name="PrivacyPolicyMenuItem" Text="Политика конфиденциальности"/>
                 <shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Text="Настройки"/>
+                <shell:ApplicationBarMenuItem x:Name="AuthorizeMenu" Text="Повторная авторизация"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
@@ -38,7 +39,7 @@
         <!--Panorama control-->
         <controls:Panorama>
             <controls:Panorama.Title>
-                <TextBlock Text="Банковские отзывы" Margin="15,90,0,0" FontSize="90"/>
+                <TextBlock Text="Где хорошие банки?" Margin="15,90,0,0" FontSize="90"/>
             </controls:Panorama.Title>
 
             <controls:PanoramaItem>
@@ -51,7 +52,7 @@
                     <telerikPrimitives:RadWrapPanel x:Name="MenuPanel">
                         <telerikPrimitives:RadHubTile Title="Карта" ImageSource="/Images/map2.png" Name="BanksMap"/>
                         <telerikPrimitives:RadHubTile Title="AR" ImageSource="/Images/map2.png" Name="BanksARMap"/>
-                        <telerikPrimitives:RadHubTile Title="Добавить отзыв" ImageSource="/Images/add.png" Name="AddReview"/>
+                        <telerikPrimitives:RadHubTile Title="Добавить отзыв" ImageSource="/Images/add.png" Name="AddReview" Tap="AddReview_Tap"/>
                         <telerikPrimitives:RadHubTile Title="Новости" ImageSource="/Images/news1.png" Name="NewsList" Tap="NewsList_Tap"/>                       
                     </telerikPrimitives:RadWrapPanel>
                 </Grid>
@@ -69,16 +70,19 @@
                 ItemTap="NewsListRad_ItemTap"
                 ItemsSource="{Binding Path=News.NewItems}"
                 DataContext="{Binding Main, Source={StaticResource Locator}}" 
-                HorizontalContentAlignment="Left" HorizontalAlignment="Left">
+                HorizontalContentAlignment="Left" HorizontalAlignment="Left" EmptyContent="Нет данных">
                     <telerikData:RadJumpList.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="15,20,0,0" Width="Auto">
                                 <Grid.ColumnDefinitions>
-                                    <!--<ColumnDefinition Width="109"/>-->
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding CreatedAt}" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Contributor}" TextWrapping="Wrap" />
                                 <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
-                                <StackPanel Grid.Column="1" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                    
                                     <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
                                 </StackPanel>
                             </Grid>

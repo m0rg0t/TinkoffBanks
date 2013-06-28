@@ -25,6 +25,7 @@
     <SilverlightAppEntry>TinkoffBanks.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,14 +138,20 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewsListPage.xaml.cs">
+    <Compile Include="Pages\News\NewsListPage.xaml.cs">
       <DependentUpon>NewsListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewsPage.xaml.cs">
+    <Compile Include="Pages\News\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="OAuth.xaml.cs">
       <DependentUpon>OAuth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Review\CreateReview.xaml.cs">
+      <DependentUpon>CreateReview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Review\ViewReview.xaml.cs">
+      <DependentUpon>ViewReview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -162,14 +169,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewsListPage.xaml">
+    <Page Include="Pages\News\NewsListPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NewsPage.xaml">
+    <Page Include="Pages\News\NewsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="OAuth.xaml">
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Review\CreateReview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Review\ViewReview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\AppBar\appbar.cancel.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\AppBar\appbar.check.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Background.png">
@@ -197,7 +218,9 @@
     <Content Include="MVVMLight.Nuget.Readme.txt" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Pages\Map\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

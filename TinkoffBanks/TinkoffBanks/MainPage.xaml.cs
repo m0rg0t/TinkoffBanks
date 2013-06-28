@@ -25,6 +25,8 @@ namespace TinkoffBanks
             // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
+
+            ViewModelLocator.MainStatic.LoadRecords();
         }
 
         // Load data for the ViewModel Items
@@ -57,7 +59,7 @@ namespace TinkoffBanks
         {
             try
             {
-                NavigationService.Navigate(new Uri("/NewsListPage.xaml", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Pages/News/NewsListPage.xaml", UriKind.Relative));
             }
             catch { };
         }
@@ -67,7 +69,7 @@ namespace TinkoffBanks
             try
             {
                 ViewModelLocator.MainStatic.News.CurrentNews = (NewsViewModel)NewsListRad.SelectedItem;
-                NavigationService.Navigate(new Uri("/NewsPage.xaml", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Pages/News/NewsPage.xaml", UriKind.Relative));
             }
             catch { };
         }
@@ -75,6 +77,15 @@ namespace TinkoffBanks
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModelLocator.MainStatic.News.LoadNews();
+        }
+
+        private void AddReview_Tap(object sender, GestureEventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new Uri("/Pages/Review/CreateReview.xaml", UriKind.Relative));
+            }
+            catch { };
         }
 
     }

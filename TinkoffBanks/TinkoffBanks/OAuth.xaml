@@ -12,6 +12,11 @@
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar>
+			<shell:ApplicationBarIconButton x:Name="AuthorizeButton" IconUri="/Assets/AppBar/appbar.check.rest.png" Text="Авторизация" Click="AuthorizeButton_Click"/>
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -22,7 +27,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="TinkoffBank" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="ApplicationTitle" Text="Где хорошие банки?" Style="{StaticResource PhoneTextNormalStyle}"/>
             <!--<TextBlock x:Name="PageTitle" Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>-->
         </StackPanel>
 
@@ -30,8 +35,8 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <phone:WebBrowser HorizontalAlignment="Left" Margin="5,0,0,0" Name="OAuthWebBrowser" VerticalAlignment="Top" Height="450" Width="450" />
             <TextBlock Height="30" HorizontalAlignment="Left" Margin="23,478,0,0" Name="EnterPinTextBlock" Text="Enter PIN:" VerticalAlignment="Top" Visibility="Collapsed" />
-            <TextBox Height="72" HorizontalAlignment="Left" Margin="117,456,0,0" Name="PinTextBox" Text="" VerticalAlignment="Top" Width="333" IsEnabled="False" />
-            <Button Content="Authenticate" Height="72" HorizontalAlignment="Left" Margin="117,529,0,0" Name="AuthenticateButton" VerticalAlignment="Top" Width="216" IsEnabled="False" Click="AuthenticateButton_Click" />
+            <TextBox Height="72" HorizontalAlignment="Left" Margin="10,550,0,0" Name="PinTextBox" Text="" VerticalAlignment="Top" Width="450" IsEnabled="False" />
+            <Button Content="Authenticate" Height="72" HorizontalAlignment="Left" Margin="117,529,0,0" Name="AuthenticateButton" VerticalAlignment="Top" Width="216" IsEnabled="False" Click="AuthenticateButton_Click" Visibility="Collapsed" />
         </Grid>
     </Grid>
  

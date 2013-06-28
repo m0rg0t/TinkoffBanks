@@ -25,5 +25,25 @@ namespace TinkoffBanks.ViewModel
                 RaisePropertyChanged("Content");
             }
         }
+
+        private DateTime _createdAt = DateTime.Now;
+        public DateTime CreatedAt
+        {
+            get
+            {
+                return _createdAt;
+            }
+            set
+            {
+                _createdAt = value;
+                RaisePropertyChanged("CreatedAt");
+            }
+        }
+
+        public object Author { get; set; }
+
+        public LinqToTwitter.Coordinate Coordinates { get; set; }
+
+        public string Contributor { get; set; }
     }
 }

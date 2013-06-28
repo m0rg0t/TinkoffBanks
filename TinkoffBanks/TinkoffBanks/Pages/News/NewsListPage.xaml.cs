@@ -27,7 +27,7 @@ namespace TinkoffBanks
             try
             {
                 ViewModelLocator.MainStatic.News.CurrentNews = (NewsViewModel)NewsList.SelectedItem;
-                NavigationService.Navigate(new Uri("/NewsPage.xaml", UriKind.Relative));
+                NavigationService.Navigate(new Uri("/Pages/News/NewsPage.xaml", UriKind.Relative));
             }
             catch { };
         }

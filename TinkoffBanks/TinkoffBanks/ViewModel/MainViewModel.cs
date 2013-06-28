@@ -90,7 +90,7 @@ namespace TinkoffBanks.ViewModel
                 var twitterCtx = new TwitterContext(auth);
                     (from search in twitterCtx.Search
                      where search.Type == SearchType.Search && search.Query == "#ihatetowait" &&
-                           search.Count == 7
+                           search.Count == 30
                      select search).MaterializedAsyncCallback(resp =>
             {
                 ObservableCollection<TwitItem> nowitems = new ObservableCollection<TwitItem>();
@@ -105,6 +105,15 @@ namespace TinkoffBanks.ViewModel
                     {
                             TwitItem twit = new TwitItem();
                             twit.Content = entry.Text;
+                            twit.CreatedAt = entry.CreatedAt;
+                            twit.Coordinates = entry.Coordinates;
+                            try
+                            {
+                                twit.Contributor = entry.Contributors.First().ScreenName;
+                            }
+                            catch {
+                                twit.Contributor = "Скрыто";
+                            };
                             nowitems.Add(twit);   
                     });
                 });
