@@ -64,6 +64,7 @@ namespace TinkoffBanks
             {
                 if (item.GeoLocation!=null)
                 {
+                    item.ParseRawContent();
                     aritems.Add(item);
                 };
             };
@@ -89,7 +90,8 @@ namespace TinkoffBanks
             GeoCoordinate currentLocation = new GeoCoordinate(ViewModelLocator.MainStatic.Latitued, ViewModelLocator.MainStatic.Longitude);
             map1.Children.Add(new Pushpin() { Location = currentLocation, Content = "Я" });
             foreach (var item in ViewModelLocator.MainStatic.Distance_items)
-            {                
+            {
+                item.ParseRawContent();
                 map1.Children.Add(new Pushpin() { Location = item.GeoLocation, Content = item.Content.ToString() });
             };
             map1.ZoomLevel = 14;

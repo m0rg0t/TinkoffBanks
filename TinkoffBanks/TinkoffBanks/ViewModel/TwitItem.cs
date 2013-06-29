@@ -227,6 +227,7 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(mat.Value.ToString(), "");
                     string inline_data = mat.Value.ToString().Replace("inline", "").Replace("#", "");
                     Inline = Int32.Parse(inline_data);
                 }
@@ -240,6 +241,7 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(mat.Value.ToString(), "");
                     string mtowait_data = mat.Value.ToString().Replace("mtowait", "").Replace("#", "");
                     MToWait = Int32.Parse(mtowait_data);
                 }
@@ -253,6 +255,7 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(mat.Value.ToString(), "");
                     string htowait_data = mat.Value.ToString().Replace("htowait", "").Replace("#", "");
                     MToWait = Int32.Parse(htowait_data)*60;
                 }
@@ -266,13 +269,28 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(mat.Value.ToString(), "");
                     string closed_data = mat.Value.ToString().Replace("closed", "").Replace("#", "");
                     Closed = Int32.Parse(closed_data);
                 }
             }
             catch { };
 
-            Content = data;
+            try
+            {
+                string pattern = @"#(\d+)avail";
+                Regex newReg = new Regex(pattern);
+                MatchCollection matches = newReg.Matches(data);
+                foreach (Match mat in matches)
+                {
+                    data = data.Replace(mat.Value.ToString(), "");
+                    string avail_data = mat.Value.ToString().Replace("avail", "").Replace("#", "");
+                    Avail = Int32.Parse(avail_data);
+                }
+            }
+            catch { };
+
+            this.Content = data;
         }
 
         public double Distance
