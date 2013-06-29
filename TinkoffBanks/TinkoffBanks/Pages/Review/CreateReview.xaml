@@ -14,8 +14,8 @@
     shell:SystemTray.IsVisible="True">
 	<phone:PhoneApplicationPage.ApplicationBar>
 		<shell:ApplicationBar>
-			<shell:ApplicationBarIconButton x:Name="CreateButton" IconUri="/Assets/AppBar/appbar.check.rest.png" Text="Создать"/>
-			<shell:ApplicationBarIconButton x:Name="CancelButton" IconUri="/Assets/AppBar/appbar.cancel.rest.png" Text="Отменить"/>
+			<shell:ApplicationBarIconButton x:Name="CreateButton" IconUri="/Assets/AppBar/appbar.check.rest.png" Text="Создать" Click="CreateButton_Click"/>
+			<shell:ApplicationBarIconButton x:Name="CancelButton" IconUri="/Assets/AppBar/appbar.cancel.rest.png" Text="Отменить" Click="CancelButton_Click"/>
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>
 
@@ -38,32 +38,32 @@
 			<StackPanel>
 				<StackPanel>
 					<TextBlock Text="Название банка"/>
-					<TextBox Name="BankName" TextWrapping="Wrap" VerticalAlignment="Top"/>
+					<TextBox Name="BankName" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="BankName_KeyDown"/>
 				</StackPanel>
 
 				<StackPanel>
 					<TextBlock Text="Ваш комментарий"/>
-					<TextBox Name="Comment" TextWrapping="Wrap" VerticalAlignment="Top"/>
+					<TextBox Name="Comment" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Comment_KeyDown"/>
 				</StackPanel>
 				
 				<StackPanel>
 					<TextBlock Text="Длина очереди"/>
-					<TextBox Name="Inline" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox Name="Inline" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Inline_KeyDown"/>
 				</StackPanel>
 
 				<StackPanel>
 					<TextBlock Text="Время ожидания, минуты"/>
-					<TextBox Name="ToWait" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox Name="ToWait" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="ToWait_KeyDown"/>
 				</StackPanel>
 
 				<StackPanel>
 					<TextBlock Text="Сколько окошек открыто"/>
-					<TextBox Name="Avail" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox Name="Avail" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Avail_KeyDown"/>
 				</StackPanel>
 
 				<StackPanel>
 					<TextBlock Text="Сколько окошек закрыто"/>
-					<TextBox Name="Closed" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                        <TextBox Name="Closed" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top"/>
 				</StackPanel>
 
 				<StackPanel>
@@ -71,7 +71,8 @@
 					<CheckBox Content="Нет стульев" Name="NoChairs"/>
 					<CheckBox Content="Упоротый персонал" Name="RetardedTeller"/>
 					<CheckBox Content="Назад в СССР" Name="UssrStyle"/>
-				</StackPanel>
+                    <CheckBox Content="Грабеж в процессе" Name="RobberyInProgress"/>
+                </StackPanel>
 
 			</StackPanel>
         	</ScrollViewer>

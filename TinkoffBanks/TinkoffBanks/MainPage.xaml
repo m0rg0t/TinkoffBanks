@@ -50,7 +50,7 @@
                 </controls:PanoramaItem.Header>
                 <Grid Margin="10,-10,10,0">
                     <telerikPrimitives:RadWrapPanel x:Name="MenuPanel">
-                        <telerikPrimitives:RadHubTile Title="Карта" ImageSource="/Images/map2.png" Name="BanksMap"/>
+                        <telerikPrimitives:RadHubTile Title="Карта" ImageSource="/Images/map2.png" Name="BanksMap" Tap="BanksMap_Tap"/>
                         <telerikPrimitives:RadHubTile Title="AR" ImageSource="/Images/map2.png" Name="BanksARMap"/>
                         <telerikPrimitives:RadHubTile Title="Добавить отзыв" ImageSource="/Images/add.png" Name="AddReview" Tap="AddReview_Tap"/>
                         <telerikPrimitives:RadHubTile Title="Новости" ImageSource="/Images/news1.png" Name="NewsList" Tap="NewsList_Tap"/>                       
@@ -78,11 +78,8 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding CreatedAt}" TextWrapping="Wrap" />
-                                <TextBlock Grid.Column="1" Text="{Binding Contributor}" TextWrapping="Wrap" />
                                 <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
                                 <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
-                                    
                                     <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
                                 </StackPanel>
                             </Grid>
@@ -97,17 +94,36 @@
                         <TextBlock Text="Свежие твиты" FontSize="60" Margin="15,-15,0,0"/>
                     </Border>
                 </controls:PanoramaItem.Header>
-                <ListBox Margin="0,0,-12,0" 
-                         ItemsSource="{Binding Path=Items}"
-                         DataContext="{Binding Main, Source={StaticResource Locator}}">
-                    <ListBox.ItemTemplate>
+                <telerikData:RadJumpList 
+                Margin="0,0,0,0" Width="Auto"                
+                x:Name="TwitsListRad" 
+                ItemsSource="{Binding Items}"
+                DataContext="{Binding Main, Source={StaticResource Locator}}" 
+                HorizontalContentAlignment="Left" HorizontalAlignment="Left" EmptyContent="Нет данных">
+                    <telerikData:RadJumpList.ItemTemplate>
                         <DataTemplate>
-                                <StackPanel Margin="5,8,0,17">
-                                    <TextBlock Text="{Binding Content}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                </StackPanel>
+                        <Grid Margin="15,20,0,0" Width="Auto">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding UserName}" TextWrapping="Wrap" />
+                            <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
+                                <Image Source="{Binding ProfileImage}" Grid.Column="0" Width="48" Margin="3" 
+                                       Grid.Row="2"/>
+                                <StackPanel Grid.Column="1" Grid.Row="2" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                <TextBlock Text="{Binding Content}" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                        </telerikData:RadJumpList.ItemTemplate>
+                </telerikData:RadJumpList>
             </controls:PanoramaItem>
 
         </controls:Panorama>

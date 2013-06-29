@@ -63,7 +63,6 @@
               Margin="12,0,12,0">
             <telerikData:RadJumpList 
                 Margin="0,0,0,0" Width="Auto"                
-                EmptyContentTemplate="{StaticResource NoDataListTemlate}"
                 x:Name="NewsList" 
                 ItemTap="NewsList_ItemTap"
                 ItemsSource="{Binding Path=News.SortedItems}"

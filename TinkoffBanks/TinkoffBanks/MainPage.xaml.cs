@@ -26,7 +26,11 @@ namespace TinkoffBanks
             DataContext = App.ViewModel;
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
 
-            ViewModelLocator.MainStatic.LoadRecords();
+            try
+            {
+                ViewModelLocator.MainStatic.LoadRecords();
+            }
+            catch { };
         }
 
         // Load data for the ViewModel Items
@@ -84,6 +88,15 @@ namespace TinkoffBanks
             try
             {
                 NavigationService.Navigate(new Uri("/Pages/Review/CreateReview.xaml", UriKind.Relative));
+            }
+            catch { };
+        }
+
+        private void BanksMap_Tap(object sender, GestureEventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new Uri("/Pages/Map/MapPage.xaml", UriKind.Relative));
             }
             catch { };
         }

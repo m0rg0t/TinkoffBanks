@@ -49,6 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FlurryWP7SDK, Version=2.0.4.0, Culture=neutral, PublicKeyToken=03a51d4df4a997cb, processorArchitecture=MSIL" />
     <Reference Include="GalaSoft.MvvmLight.Extras.WP71, Version=4.1.27.22669, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MvvmLightLibs.4.1.27.0\lib\sl4-wp71\GalaSoft.MvvmLight.Extras.WP71.dll</HintPath>
@@ -57,6 +58,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MvvmLightLibs.4.1.27.0\lib\sl4-wp71\GalaSoft.MvvmLight.WP71.dll</HintPath>
     </Reference>
+    <Reference Include="GART, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Hammock.WindowsPhone.Mango">
       <HintPath>..\packages\TweetSharp.2.3.0\lib\sl4-wp71\Hammock.WindowsPhone.Mango.dll</HintPath>
     </Reference>
@@ -66,8 +68,10 @@
     <Reference Include="LinqToTwitterWP">
       <HintPath>..\packages\linqtotwitter.2.1.06\lib\sl4-windowsphone71\LinqToTwitterWP.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Devices.Sensors" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
+    <Reference Include="Microsoft.Phone.Controls.Maps, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.4.1.27.0\lib\sl4-wp71\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -90,6 +94,7 @@
     <Reference Include="RestSharp.WindowsPhone">
       <HintPath>..\packages\RestSharp.104.1\lib\sl4-wp71\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
+    <Reference Include="System.Device" />
     <Reference Include="System.Runtime">
       <HintPath>..\packages\Microsoft.Bcl.1.0.19\lib\sl4-windowsphone71\System.Runtime.dll</HintPath>
     </Reference>
@@ -135,8 +140,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Libs\AppSettings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Map\MapPage.xaml.cs">
+      <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\News\NewsListPage.xaml.cs">
       <DependentUpon>NewsListPage.xaml</DependentUpon>
@@ -155,6 +164,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MapItem.cs" />
     <Compile Include="ViewModel\NewsViewModel.cs" />
     <Compile Include="ViewModel\SharedState.cs" />
     <Compile Include="ViewModel\TwitItem.cs" />
@@ -168,6 +178,9 @@
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Map\MapPage.xaml">
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\News\NewsListPage.xaml">
       <SubType>Designer</SubType>
@@ -215,12 +228,12 @@
     <Content Include="Images\news1.png" />
     <Content Include="Images\police_badge.png" />
     <Content Include="Images\search2.png" />
+    <Content Include="Libs\FlurryWP7SDK.dll" />
+    <Content Include="Libs\GART.dll" />
     <Content Include="MVVMLight.Nuget.Readme.txt" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Map\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
