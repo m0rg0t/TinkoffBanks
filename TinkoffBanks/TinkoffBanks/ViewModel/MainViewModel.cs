@@ -96,6 +96,21 @@ namespace TinkoffBanks.ViewModel
         }
 
 
+        private TwitItem _currentReview = null;
+        public TwitItem CurrentReview
+        {
+            get
+            {
+                return _currentReview;
+            }
+            set
+            {
+                _currentReview = value;
+                RaisePropertyChanged("CurrentReview");
+            }
+        }
+
+
         private double _latitued = 55;
         public double Latitued
         {

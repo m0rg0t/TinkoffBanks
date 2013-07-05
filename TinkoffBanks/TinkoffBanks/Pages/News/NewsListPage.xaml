@@ -72,11 +72,11 @@
                     <DataTemplate>
                         <Grid Margin="15,20,0,0" Width="Auto">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="109"/>
+                                <!--<ColumnDefinition Width="109"/>-->
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />
-                            <StackPanel Grid.Column="1" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                            <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
+                            <StackPanel Grid.Column="0" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
                                 <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
                             </StackPanel>
                         </Grid>

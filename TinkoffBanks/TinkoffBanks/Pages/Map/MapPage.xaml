@@ -32,13 +32,13 @@
                         <RowDefinition Height="0.33*"/>
                         <RowDefinition Height="16"/>
                     </Grid.RowDefinitions>
-                    <Image Grid.RowSpan="3" Source="{Binding Img}" Stretch="None" HorizontalAlignment="Center" 
+                    <Image Grid.RowSpan="3" Source="{Binding ProfileImage}" Stretch="None" HorizontalAlignment="Center" 
                            VerticalAlignment="Center" Margin="0,0,10,0"/>
                     <StackPanel Grid.Column="1">
-                    <TextBlock x:Name="NameBlock" TextWrapping="NoWrap" Text="{Binding Content}" FontSize="32" 
+                    <TextBlock x:Name="NameBlock" TextWrapping="NoWrap" Text="{Binding UserName}" FontSize="32" 
                                VerticalAlignment="Center" Margin="0,0,4,0" d:LayoutOverrides="Width"  
                                TextTrimming="WordEllipsis"/>
-                    <TextBlock TextWrapping="Wrap" Text="{Binding Adress}" FontSize="24" VerticalAlignment="Center" 
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Content}" FontSize="24" VerticalAlignment="Center" 
                                Margin="0,0,4,0" d:LayoutOverrides="Width" TextTrimming="WordEllipsis"/>
                     </StackPanel>
                 </Grid>
@@ -58,7 +58,7 @@
     </phone:PhoneApplicationPage.ApplicationBar>
 
     <shell:SystemTray.ProgressIndicator>
-        <shell:ProgressIndicator IsIndeterminate="true" IsVisible="{Binding Loading}" Text="Загрузка" />
+        <shell:ProgressIndicator IsIndeterminate="true" IsVisible="{Binding Loading}" Text="Загрузка..." />
     </shell:SystemTray.ProgressIndicator>
 
     
@@ -71,8 +71,8 @@
 
         <!--TitlePanel содержит имя приложения и заголовок страницы-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Где участковый?" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="Карта участковых" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="Где хорошие банки?" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="Карта банков" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel – поместите здесь дополнительное содержимое-->

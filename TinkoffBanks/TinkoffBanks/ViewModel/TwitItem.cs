@@ -80,6 +80,25 @@ namespace TinkoffBanks.ViewModel
             }
         }
 
+        public string AngryOldLadyStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                if (AngryOldLady)
+                {
+                    return "Злые бабушки.";
+                }
+                else
+                {
+                    return "";
+                };
+
+            }
+        }
+
         private bool _noChairs = false;
         public bool NoChairs
         {
@@ -90,6 +109,25 @@ namespace TinkoffBanks.ViewModel
             set
             {
                 _noChairs = value;
+            }
+        }
+
+        public string NoChairsStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                if (NoChairs)
+                {
+                    return "Нет стульев.";
+                }
+                else
+                {
+                    return "";
+                };
+
             }
         }
         
@@ -106,6 +144,25 @@ namespace TinkoffBanks.ViewModel
             }
         }
 
+        public string RetardedTellerStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                if (RetardedTeller)
+                {
+                    return "Упоротый персонал.";
+                }
+                else
+                {
+                    return "";
+                };
+
+            }
+        }
+
         private bool _ussrStyle = false;
         public bool UssrStyle
         {
@@ -119,6 +176,25 @@ namespace TinkoffBanks.ViewModel
             }
         }
 
+        public string UssrStyleStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                if (UssrStyle)
+                {
+                    return "В стиле СССР.";
+                }
+                else
+                {
+                    return "";
+                };
+
+            }
+        }
+
         private bool _robberyInProgress = false;
         public bool RobberyInProgress
         {
@@ -129,6 +205,25 @@ namespace TinkoffBanks.ViewModel
             set
             {
                 _robberyInProgress = value;
+            }
+        }
+
+        public string RobberyInProgressStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                if (RobberyInProgress)
+                {
+                    return "Грабеж в процессе.";
+                }
+                else
+                {
+                    return "";
+                };
+                
             }
         }
 
@@ -146,6 +241,17 @@ namespace TinkoffBanks.ViewModel
             }
         }
 
+        public string InlineStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                return "В очереди: "+Inline.ToString();
+            }
+        }
+
         private int _avail = 0;
         public int Avail
         {
@@ -156,6 +262,17 @@ namespace TinkoffBanks.ViewModel
             set
             {
                 _avail = value;
+            }
+        }
+
+        public string AvailStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                return "Открыто касс: " + Avail.ToString();
             }
         }
 
@@ -172,6 +289,17 @@ namespace TinkoffBanks.ViewModel
             }
         }
 
+        public string ClosedStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                return "Закрыто касс: " + Avail.ToString();
+            }
+        }
+
         private int _mtowait = 0;
         public int MToWait
         {
@@ -183,7 +311,18 @@ namespace TinkoffBanks.ViewModel
             {
                 _mtowait = value;
             }
-        } 
+        }
+
+        public string MToWaitStr
+        {
+            private set
+            {
+            }
+            get
+            {
+                return "Ждать в очреди: " + MToWait.ToString() + " мин.";
+            }
+        }
 
         public void ParseRawContent() {
             string data = RawContent;

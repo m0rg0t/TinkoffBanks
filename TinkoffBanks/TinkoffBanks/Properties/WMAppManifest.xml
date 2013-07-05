@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{2ea990a6-ba57-42c3-994a-0faf143fbb9d}" Title="TinkoffBanks" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="TinkoffBanks author" Description="Sample description" Publisher="TinkoffBanks">
+  <App xmlns="" ProductID="{2ea990a6-ba57-42c3-994a-0faf143fbb9d}" Title="Где хорошие банки?" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="TinkoffBanks author" Description="" Publisher="TinkoffBanks">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
@@ -26,7 +26,7 @@
         <TemplateType5>
           <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>TinkoffBanks</Title>
+          <Title>Где банки?</Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>

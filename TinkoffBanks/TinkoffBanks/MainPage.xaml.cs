@@ -101,6 +101,16 @@ namespace TinkoffBanks
             catch { };
         }
 
+        private void TwitsListRad_ItemTap(object sender, Telerik.Windows.Controls.ListBoxItemTapEventArgs e)
+        {
+            try
+            {
+                ViewModelLocator.MainStatic.CurrentReview = (TwitItem)TwitsListRad.SelectedItem;
+                NavigationService.Navigate(new Uri("/Pages/Review/ViewReview.xaml", UriKind.Relative));
+            }
+            catch { };
+        }
+
     }
 
 }

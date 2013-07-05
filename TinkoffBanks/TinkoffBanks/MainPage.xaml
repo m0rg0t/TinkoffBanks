@@ -96,7 +96,7 @@
                 </controls:PanoramaItem.Header>
                 <telerikData:RadJumpList 
                 Margin="0,0,0,0" Width="Auto"                
-                x:Name="TwitsListRad" 
+                x:Name="TwitsListRad" ItemTap="TwitsListRad_ItemTap"
                 ItemsSource="{Binding Items}"
                 DataContext="{Binding Main, Source={StaticResource Locator}}" 
                 HorizontalContentAlignment="Left" HorizontalAlignment="Left" EmptyContent="Нет данных">
@@ -109,15 +109,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />
-                                <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="{Binding UserName}" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding UserName}" TextWrapping="Wrap" />
                             <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
-                                <Image Source="{Binding ProfileImage}" Grid.Column="0" Width="48" Margin="3" 
-                                       Grid.Row="2"/>
-                                <StackPanel Grid.Column="1" Grid.Row="2" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                <Image Source="{Binding ProfileImage}" Grid.Column="0" Width="48" Margin="3,5,3,3" 
+                                       Grid.Row="1"/>
+                                <StackPanel Grid.Column="01" Grid.Row="1" Margin="15,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
                                 <TextBlock Text="{Binding Content}" TextWrapping="Wrap" />
                             </StackPanel>
                         </Grid>
