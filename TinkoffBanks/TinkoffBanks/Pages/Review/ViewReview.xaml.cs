@@ -25,18 +25,19 @@ namespace TinkoffBanks.Pages.Review
             try
             {
                 GeoCoordinate currentLocation = new GeoCoordinate(ViewModelLocator.MainStatic.Latitued, ViewModelLocator.MainStatic.Longitude);
-                this.map1.Children.Add(new Pushpin() { Location = currentLocation, Content = "Я" });
-                
-                map1.Children.Add(new Pushpin() { 
+                Map1.Children.Add(new Pushpin() { Location = currentLocation, Content = "Я" });
+
+                Map1.Children.Add(new Pushpin()
+                { 
                     Location = ViewModelLocator.MainStatic.CurrentReview.GeoLocation, Content = ViewModelLocator.MainStatic.CurrentReview.Content.ToString() });
-                
-                map1.ZoomLevel = 14;
+
+                Map1.ZoomLevel = 14;
                 try
                 {
-                    map1.Center = ViewModelLocator.MainStatic.CurrentReview.GeoLocation;
+                    Map1.Center = ViewModelLocator.MainStatic.CurrentReview.GeoLocation;
                 }
                 catch {
-                    map1.Center = currentLocation;
+                    Map1.Center = currentLocation;
                 };
                 
             }

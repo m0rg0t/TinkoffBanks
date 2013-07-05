@@ -12,6 +12,8 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using TweetSharp;
 using TinkoffBanks.ViewModel;
+using Microsoft.Phone.Tasks;
+using Coding4Fun.Toolkit.Controls;
 
 namespace TinkoffBanks
 {
@@ -107,6 +109,55 @@ namespace TinkoffBanks
             {
                 ViewModelLocator.MainStatic.CurrentReview = (TwitItem)TwitsListRad.SelectedItem;
                 NavigationService.Navigate(new Uri("/Pages/Review/ViewReview.xaml", UriKind.Relative));
+            }
+            catch { };
+        }
+
+        private void TwitList_Tap(object sender, GestureEventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new Uri("/Pages/Review/TwitListPage.xaml", UriKind.Relative));
+            }
+            catch { };
+        }
+
+        private void RateAppMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var marketplaceReviewTask = new MarketplaceReviewTask();
+                marketplaceReviewTask.Show();
+            }
+            catch
+            {
+            };
+        }
+
+        private void PrivacyPolicyMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var messagePrompt = new MessagePrompt
+                {
+                    Title = "Политика конфиденциальности",
+                    Body = new TextBlock { 
+                        Text = "Приложение не собирает никаких данных без вашего ведома.\nПриложение не собирает и не хранит информацию, которая связана с определенным именем. Мы также делаем все возможное, чтобы обезопасить хранимые данные.\nПринимая условия, которые включают эту политику вы соглашаетесь с данной политикой конфиденциальности.\nКонтакты m0rg0t.Anton@gmail.com", 
+                        MaxHeight = 500,
+                        TextWrapping = TextWrapping.Wrap },
+                    IsAppBarVisible = false,
+                    IsCancelVisible = false
+                };
+                messagePrompt.Show();
+            }
+            catch { };
+        }
+
+        private void AuthorizeMenu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new Uri("/OAuth.xaml", UriKind.Relative));
             }
             catch { };
         }

@@ -226,7 +226,7 @@ namespace TinkoffBanks.ViewModel
                 var twitterCtx = new TwitterContext(auth);
                     (from search in twitterCtx.Search
                      where search.Type == SearchType.Search && search.Query == "#ihatetowait" &&
-                           search.Count == 30
+                           search.Count == 90
                      select search).MaterializedAsyncCallback(resp =>
             {
                 ObservableCollection<TwitItem> nowitems = new ObservableCollection<TwitItem>();

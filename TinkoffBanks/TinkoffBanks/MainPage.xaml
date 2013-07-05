@@ -25,10 +25,10 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Minimized">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="RateAppMenuItem" Text="Оценить приложение"/>
-                <shell:ApplicationBarMenuItem x:Name="PrivacyPolicyMenuItem" Text="Политика конфиденциальности"/>
-                <shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Text="Настройки"/>
-                <shell:ApplicationBarMenuItem x:Name="AuthorizeMenu" Text="Повторная авторизация"/>
+                <shell:ApplicationBarMenuItem x:Name="RateAppMenuItem" Text="Оценить приложение" Click="RateAppMenuItem_Click"/>
+                <shell:ApplicationBarMenuItem x:Name="PrivacyPolicyMenuItem" Text="Политика конфиденциальности" Click="PrivacyPolicyMenuItem_Click"/>
+                <!--<shell:ApplicationBarMenuItem x:Name="SettingsMenuItem" Text="Настройки"/>-->
+                <shell:ApplicationBarMenuItem x:Name="AuthorizeMenu" Text="Повторная авторизация" Click="AuthorizeMenu_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
@@ -51,7 +51,7 @@
                 <Grid Margin="10,-10,10,0">
                     <telerikPrimitives:RadWrapPanel x:Name="MenuPanel">
                         <telerikPrimitives:RadHubTile Title="Карта" ImageSource="/Images/map2.png" Name="BanksMap" Tap="BanksMap_Tap"/>
-                        <telerikPrimitives:RadHubTile Title="AR" ImageSource="/Images/map2.png" Name="BanksARMap"/>
+                        <telerikPrimitives:RadHubTile Title="Твиты" ImageSource="/Images/twit.png" Name="TwitList" Tap="TwitList_Tap"/>
                         <telerikPrimitives:RadHubTile Title="Добавить отзыв" ImageSource="/Images/add.png" Name="AddReview" Tap="AddReview_Tap"/>
                         <telerikPrimitives:RadHubTile Title="Новости" ImageSource="/Images/news1.png" Name="NewsList" Tap="NewsList_Tap"/>                       
                     </telerikPrimitives:RadWrapPanel>

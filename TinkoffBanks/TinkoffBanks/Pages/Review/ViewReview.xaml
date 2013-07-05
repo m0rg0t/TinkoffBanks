@@ -127,7 +127,7 @@
                     </Border>
                 </controls:PanoramaItem.Header>
                 <Grid>
-                    <maps:Map x:Name="map1" Margin="0,10,0,0" 
+                    <maps:Map x:Name="Map1" Margin="0,10,0,0" 
                               CredentialsProvider="{StaticResource BingCredentials}"/>
                 </Grid>
             </controls:PanoramaItem>

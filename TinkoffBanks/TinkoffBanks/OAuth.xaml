@@ -36,7 +36,7 @@
             <phone:WebBrowser HorizontalAlignment="Left" Margin="5,0,0,0" Name="OAuthWebBrowser" VerticalAlignment="Top" Height="450" Width="450" />
             <TextBlock Height="30" HorizontalAlignment="Left" Margin="23,478,0,0" Name="EnterPinTextBlock" Text="Введите PIN:" VerticalAlignment="Top" Visibility="Collapsed" />
             <TextBox Height="72" InputScope="Number" HorizontalAlignment="Left" Margin="137,456,0,0" Name="PinTextBox" Text="" VerticalAlignment="Top" Width="313" IsEnabled="False" />
-            <Button Content="Вход" Height="72" HorizontalAlignment="Left" Margin="117,529,0,0" Name="AuthenticateButton" VerticalAlignment="Top" Width="216" IsEnabled="False" Click="AuthenticateButton_Click" />
+            <Button Content="Вход" Height="72" HorizontalAlignment="Left" Margin="137,529,0,0" Name="AuthenticateButton" VerticalAlignment="Top" Width="216" IsEnabled="False" Click="AuthenticateButton_Click" />
             <!--<phone:WebBrowser HorizontalAlignment="Left" Margin="5,0,0,0" Name="OAuthWebBrowser" VerticalAlignment="Top" Height="450" Width="450" />
             <TextBlock Height="30" HorizontalAlignment="Left" Margin="23,478,0,0" Name="EnterPinTextBlock" Text="Enter PIN:" VerticalAlignment="Top" Visibility="Collapsed" />
             <TextBox Height="72" HorizontalAlignment="Left" Margin="10,550,0,0" Name="PinTextBox" Text="" VerticalAlignment="Top" Width="450" IsEnabled="False" />
