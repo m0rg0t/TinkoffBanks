@@ -10,10 +10,17 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     mc:Ignorable="d"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"
     DataContext="{Binding Main.CurrentReview, Source={StaticResource Locator}}"
+    Loaded="PhoneApplicationPage_Loaded"
     shell:SystemTray.IsVisible="True">
 
+    <phone:PhoneApplicationPage.Resources>
+        <maps:ApplicationIdCredentialsProvider x:Key="BingCredentials" ApplicationId="AleF-exBAWd-gM9i3JJ0yWTEBsTGK2cHob09pmgpnHc5MCl3XjMhWToUK6MlmgFx" />
+    </phone:PhoneApplicationPage.Resources>
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -21,92 +28,112 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="Где хорошие банки?" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="Отзыв" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        <controls:Panorama>
+            <controls:Panorama.Title>
+                <TextBlock Text="Где хорошие банки?" Margin="15,90,0,0" FontSize="90"/>
+            </controls:Panorama.Title>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ScrollViewer>
-                <StackPanel>
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.Header>
+                    <Border  Margin="-12,0,0,0">
+                        <TextBlock Text="Отзыв" FontSize="60" Margin="15,-15,0,0"/>
+                    </Border>
+                </controls:PanoramaItem.Header>
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding UserName}" TextWrapping="Wrap" />
-                        <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />                        
-                    </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding UserName}" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />
+                            </Grid>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="{Binding ProfileImage}" Grid.Column="0" Width="48" Margin="3"/>
-                        <TextBlock Text="{Binding Content}" Grid.Column="1" TextWrapping="Wrap" />
-                    </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding ProfileImage}" Grid.Column="0" Width="48" Margin="3"/>
+                                <TextBlock Text="{Binding Content}" Grid.Column="1" TextWrapping="Wrap" />
+                            </Grid>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding AvailStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding AvailStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding InlineStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding InlineStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding ClosedStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding ClosedStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding AngryOldLadyStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding AngryOldLadyStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding NoChairsStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding NoChairsStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding RetardedTellerStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding RetardedTellerStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding UssrStyleStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding UssrStyleStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding RobberyInProgressStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding RobberyInProgressStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                    <StackPanel Margin="0,4" 
+                            <StackPanel Margin="0,4" 
                                 Visibility="{Binding MToWaitStr, Converter={StaticResource StringConverter}}">
-                        <TextBlock TextWrapping="Wrap" 
+                                <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding MToWaitStr}" Margin="0,-4,0,0"/>
-                    </StackPanel>
+                            </StackPanel>
 
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </controls:PanoramaItem>
+
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.Header>
+                    <Border  Margin="-12,0,0,0">
+                        <TextBlock Text="Карта" FontSize="60" Margin="15,-15,0,0"/>
+                    </Border>
+                </controls:PanoramaItem.Header>
+                <Grid>
+                    <maps:Map x:Name="map1" Margin="0,10,0,0" 
+                              CredentialsProvider="{StaticResource BingCredentials}"/>
+                </Grid>
+            </controls:PanoramaItem>
+
+        </controls:Panorama>
+
     </Grid>
 
 </phone:PhoneApplicationPage>
