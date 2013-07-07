@@ -24,6 +24,8 @@ namespace TinkoffBanks
             EnterPinTextBlock.Visibility = Visibility.Visible;
             PinTextBox.IsEnabled = true;
             AuthenticateButton.IsEnabled = true;
+
+            ViewModelLocator.MainStatic.News.LoadNews();
         }
 
         void Page_Loaded(object sender, RoutedEventArgs e)
@@ -60,53 +62,44 @@ namespace TinkoffBanks
 
         private void AuthenticateButton_Click(object sender, RoutedEventArgs e)
         {
-            pinAuth.CompleteAuthorize(
-                PinTextBox.Text,
-                completeResp => Dispatcher.BeginInvoke(() =>
+            try
+            {
+                try
                 {
-                    switch (completeResp.Status)
+                    ViewModelLocator.MainStatic.Loading = true;
+                }
+                catch { };
+
+                pinAuth.CompleteAuthorize(
+                    PinTextBox.Text,
+                    completeResp => Dispatcher.BeginInvoke(() =>
                     {
-                        case TwitterErrorStatus.Success:
-                            SharedState.Authorizer = pinAuth;
-                            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-                            break;
-                        case TwitterErrorStatus.TwitterApiError:
-                        case TwitterErrorStatus.RequestProcessingException:
-                            MessageBox.Show(
-                                completeResp.Exception.ToString(),
-                                completeResp.Message,
-                                MessageBoxButton.OK);
-                            break;
-                    }
-                }));
+                        switch (completeResp.Status)
+                        {
+                            case TwitterErrorStatus.Success:
+                                SharedState.Authorizer = pinAuth;
+                                try
+                                {
+                                    ViewModelLocator.MainStatic.Loading = false;
+                                }
+                                catch { };
+                                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                                break;
+                            case TwitterErrorStatus.TwitterApiError:
+                            case TwitterErrorStatus.RequestProcessingException:
+                                MessageBox.Show(
+                                    completeResp.Exception.ToString(),
+                                    completeResp.Message,
+                                    MessageBoxButton.OK);
+                                break;
+                        }
+                    }));
+            }
+            catch { };
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModelLocator.MainStatic.LoadRecords();
-        }
-
-        private void AuthorizeButton_Click(object sender, EventArgs e)
-        {
-            pinAuth.CompleteAuthorize(
-                PinTextBox.Text,
-                completeResp => Dispatcher.BeginInvoke(() =>
-                {
-                    switch (completeResp.Status)
-                    {
-                        case TwitterErrorStatus.Success:
-                            SharedState.Authorizer = pinAuth;
-                            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-                            break;
-                        case TwitterErrorStatus.TwitterApiError:
-                        case TwitterErrorStatus.RequestProcessingException:
-                            MessageBox.Show(
-                                completeResp.Exception.ToString(),
-                                completeResp.Message,
-                                MessageBoxButton.OK);
-                            break;
-                    }
-                }));
         }
     }
 }

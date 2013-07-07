@@ -162,6 +162,25 @@ namespace TinkoffBanks
             catch { };
         }
 
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ViewModelLocator.MainStatic.LoadRecords();
+                ViewModelLocator.MainStatic.News.LoadNews();
+            }
+            catch { };
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                NavigationService.Navigate(new Uri("/Pages/Review/CreateReview.xaml", UriKind.Relative));
+            }
+            catch { };
+        }
+
     }
 
 }

@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using LinqToTwitter;
 using TinkoffBanks.ViewModel;
+using Microsoft.Phone.Tasks;
 
 namespace TinkoffBanks.Pages.Review
 {
@@ -17,6 +18,9 @@ namespace TinkoffBanks.Pages.Review
         public CreateReview()
         {
             InitializeComponent();
+
+            _cameraTask = new CameraCaptureTask();
+            _cameraTask.Completed += cameraTask_Completed;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -171,6 +175,16 @@ namespace TinkoffBanks.Pages.Review
                 return false;
             };
             return true;
+        }
+
+        CameraCaptureTask _cameraTask;
+        private void SelectPhotoButton_Click(object sender, RoutedEventArgs e)
+        {
+            _cameraTask.Show();
+        }
+
+        private void cameraTask_Completed(object sender, PhotoResult e)
+        {
         }
 
     }

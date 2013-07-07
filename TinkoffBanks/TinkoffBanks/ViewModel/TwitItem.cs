@@ -332,30 +332,35 @@ namespace TinkoffBanks.ViewModel
             if (data.IndexOf("#angryoldlady") != -1)
             {
                 AngryOldLady = true;
+                data = data.Replace(" #angryoldlady", "");
                 data = data.Replace("#angryoldlady", "");
             };
 
             if (data.IndexOf("#nochairs") != -1)
             {
                 NoChairs = true;
+                data = data.Replace(" #nochairs", "");
                 data = data.Replace("#nochairs", "");
             };
 
             if (data.IndexOf("#retardedteller") != -1)
             {
                 RetardedTeller = true;
+                data = data.Replace(" #retardedteller", "");
                 data = data.Replace("#retardedteller", "");
             };
 
             if (data.IndexOf("#ussrstyle") != -1)
             {
                 UssrStyle = true;
+                data = data.Replace(" #ussrstyle", "");
                 data = data.Replace("#ussrstyle", "");
             };
 
             if (data.IndexOf("#robberyinprogress") != -1)
             {
                 RobberyInProgress = true;
+                data = data.Replace(" #robberyinprogress", "");
                 data = data.Replace("#robberyinprogress", "");
             };
 
@@ -366,6 +371,7 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(" "+mat.Value.ToString(), "");
                     data = data.Replace(mat.Value.ToString(), "");
                     string inline_data = mat.Value.ToString().Replace("inline", "").Replace("#", "");
                     Inline = Int32.Parse(inline_data);
@@ -380,6 +386,7 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(" " + mat.Value.ToString(), "");
                     data = data.Replace(mat.Value.ToString(), "");
                     string mtowait_data = mat.Value.ToString().Replace("mtowait", "").Replace("#", "");
                     MToWait = Int32.Parse(mtowait_data);
@@ -394,6 +401,7 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(" " + mat.Value.ToString(), "");
                     data = data.Replace(mat.Value.ToString(), "");
                     string htowait_data = mat.Value.ToString().Replace("htowait", "").Replace("#", "");
                     MToWait = Int32.Parse(htowait_data)*60;
@@ -408,6 +416,7 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(" " + mat.Value.ToString(), "");
                     data = data.Replace(mat.Value.ToString(), "");
                     string closed_data = mat.Value.ToString().Replace("closed", "").Replace("#", "");
                     Closed = Int32.Parse(closed_data);
@@ -422,6 +431,7 @@ namespace TinkoffBanks.ViewModel
                 MatchCollection matches = newReg.Matches(data);
                 foreach (Match mat in matches)
                 {
+                    data = data.Replace(" " + mat.Value.ToString(), "");
                     data = data.Replace(mat.Value.ToString(), "");
                     string avail_data = mat.Value.ToString().Replace("avail", "").Replace("#", "");
                     Avail = Int32.Parse(avail_data);
@@ -432,6 +442,19 @@ namespace TinkoffBanks.ViewModel
             this.Content = data;
         }
 
+
+        public string DistanceInKm
+        {
+            get
+            {
+                double km = Distance / 1000;
+                km = Math.Round(km);
+                return km.ToString() + " км";
+            }
+            private set
+            {
+            }
+        }
         public double Distance
         {
             get

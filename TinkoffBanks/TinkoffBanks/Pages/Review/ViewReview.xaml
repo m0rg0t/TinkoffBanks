@@ -43,22 +43,26 @@
                     <ScrollViewer>
                         <StackPanel>
 
-                            <Grid>
+                            <Grid Margin="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="200"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding UserName}" TextWrapping="Wrap" />
-                                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding UserName}"                                            
+                                           TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Grid.Row="0" Margin="10,0,0,0"                                            
+                                           Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />
                             </Grid>
 
-                            <Grid>
+                            <Grid Margin="0,10,0,10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="60"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding ProfileImage}" Grid.Column="0" Width="48" Margin="3"/>
-                                <TextBlock Text="{Binding Content}" Grid.Column="1" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding Content}" 
+                                           Style="{StaticResource PhoneTextTitle2Style}"
+                                           Grid.Column="1" TextWrapping="Wrap" />
                             </Grid>
 
                             <StackPanel Margin="0,4" 
@@ -113,6 +117,14 @@
                                 Visibility="{Binding MToWaitStr, Converter={StaticResource StringConverter}}">
                                 <TextBlock TextWrapping="Wrap" 
 						        Text="{Binding MToWaitStr}" Margin="0,-4,0,0"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,10,0,5" Orientation="Horizontal"
+                                Visibility="{Binding DistanceInKm, Converter={StaticResource StringConverter}}">
+                                <TextBlock TextWrapping="Wrap" 
+						        Text="Расстояние: " Margin="0,-4,0,0"/>
+                                <TextBlock TextWrapping="Wrap" 
+						        Text="{Binding DistanceInKm}" Margin="0,-4,0,0"/>
                             </StackPanel>
 
                         </StackPanel>

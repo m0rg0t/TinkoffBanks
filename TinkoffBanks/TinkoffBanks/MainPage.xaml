@@ -24,6 +24,8 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Mode="Minimized">
+            <shell:ApplicationBarIconButton x:Name="AddButton" Text="Добавить" IconUri="/Assets/AppBar/appbar.add.rest.png" Click="AddButton_Click" />
+            <shell:ApplicationBarIconButton x:Name="UpdateButton" Text="Обновить" IconUri="/Assets/AppBar/appbar.refresh.rest.png" Click="UpdateButton_Click" />            
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="RateAppMenuItem" Text="Оценить приложение" Click="RateAppMenuItem_Click"/>
                 <shell:ApplicationBarMenuItem x:Name="PrivacyPolicyMenuItem" Text="Политика конфиденциальности" Click="PrivacyPolicyMenuItem_Click"/>
@@ -79,8 +81,10 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
-                                <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
-                                    <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
+                                <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="15,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                    <TextBlock Text="{Binding CreatedAtText}"/>
+                                    <TextBlock Text="{Binding Title}"
+                                               TextWrapping="Wrap" />
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -102,7 +106,7 @@
                 HorizontalContentAlignment="Left" HorizontalAlignment="Left" EmptyContent="Нет данных">
                     <telerikData:RadJumpList.ItemTemplate>
                         <DataTemplate>
-                        <Grid Margin="15,20,0,0" Width="Auto">
+                        <Grid Margin="15,20,0,5" Width="Auto">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -112,7 +116,7 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
                                 <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />
-                                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding UserName}" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Grid.Row="0" Margin="10,0,0,0" Text="{Binding UserName}" TextWrapping="Wrap" />
                             <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
                                 <Image Source="{Binding ProfileImage}" Grid.Column="0" Width="48" Margin="3,5,3,3" 
                                        Grid.Row="1"/>

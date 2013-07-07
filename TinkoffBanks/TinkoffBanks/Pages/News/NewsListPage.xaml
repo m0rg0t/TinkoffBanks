@@ -76,8 +76,10 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
-                            <StackPanel Grid.Column="0" Margin="15,-5,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
-                                <TextBlock Text="{Binding Title}" TextWrapping="Wrap" />
+                            <StackPanel Grid.Column="0" Margin="15,8,0,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Width="Auto">
+                                <TextBlock Text="{Binding CreatedAtText}"/>
+                                <TextBlock Text="{Binding Title}"
+                                               TextWrapping="Wrap" />
                             </StackPanel>
                         </Grid>
                     </DataTemplate>

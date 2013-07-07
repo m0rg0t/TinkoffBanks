@@ -30,23 +30,24 @@ namespace TinkoffBanks.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
-            try
+            if (IsInDesignMode)
             {
-                bool geo = true;
-                if (AppSettings.TryGetSetting<bool>("GeolocationStatus", out geo))
-                {
-                    GeolocationStatus = geo;
-                };                
+                // Code runs in Blend --> create design time data.
             }
-            catch { };
+            else
+            {
+                try
+                {
+                    bool geo = true;
+                    if (AppSettings.TryGetSetting<bool>("GeolocationStatus", out geo))
+                    {
+                        GeolocationStatus = geo;
+                    };
+                }
+                catch { };
+                // Code runs "for real"
+            }
+
         }
 
         private bool _geolocationStatus = true;

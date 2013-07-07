@@ -35,46 +35,47 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
 			<ScrollViewer>
-			<StackPanel>
-				<StackPanel>
-					<TextBlock Text="Название банка"/>
-					<TextBox Name="BankName" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="BankName_KeyDown"/>
-				</StackPanel>
+			    <StackPanel>
+				    <StackPanel>
+					    <TextBlock Text="Название банка"/>
+					    <TextBox Name="BankName" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="BankName_KeyDown"/>
+				    </StackPanel>
 
-				<StackPanel>
-					<TextBlock Text="Ваш комментарий"/>
-					<TextBox Name="Comment" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Comment_KeyDown"/>
-				</StackPanel>
+				    <StackPanel>
+					    <TextBlock Text="Ваш комментарий"/>
+					    <TextBox Name="Comment" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Comment_KeyDown"/>
+				    </StackPanel>
 				
-				<StackPanel>
-					<TextBlock Text="Длина очереди"/>
-                        <TextBox Name="Inline" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Inline_KeyDown"/>
-				</StackPanel>
+				    <StackPanel>
+					    <TextBlock Text="Длина очереди"/>
+                            <TextBox Name="Inline" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Inline_KeyDown"/>
+				    </StackPanel>
 
-				<StackPanel>
-					<TextBlock Text="Время ожидания, минуты"/>
-                        <TextBox Name="ToWait" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="ToWait_KeyDown"/>
-				</StackPanel>
+				    <StackPanel>
+					    <TextBlock Text="Время ожидания, минуты"/>
+                            <TextBox Name="ToWait" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="ToWait_KeyDown"/>
+				    </StackPanel>
 
-				<StackPanel>
-					<TextBlock Text="Сколько окошек открыто"/>
-                        <TextBox Name="Avail" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Avail_KeyDown"/>
-				</StackPanel>
+				    <StackPanel>
+					    <TextBlock Text="Сколько окошек открыто"/>
+                            <TextBox Name="Avail" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top" KeyDown="Avail_KeyDown"/>
+				    </StackPanel>
 
-				<StackPanel>
-					<TextBlock Text="Сколько окошек закрыто"/>
-                        <TextBox Name="Closed" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top"/>
-				</StackPanel>
+				    <StackPanel>
+					    <TextBlock Text="Сколько окошек закрыто"/>
+                            <TextBox Name="Closed" Text="0" InputScope="Number" TextWrapping="Wrap" VerticalAlignment="Top"/>
+				    </StackPanel>
 
-				<StackPanel>
-					<CheckBox Content="Злые старушки" Name="AngryOldLady"/>
-					<CheckBox Content="Нет стульев" Name="NoChairs"/>
-					<CheckBox Content="Упоротый персонал" Name="RetardedTeller"/>
-					<CheckBox Content="Назад в СССР" Name="UssrStyle"/>
-                    <CheckBox Content="Грабеж в процессе" Name="RobberyInProgress"/>
+				    <StackPanel>
+					    <CheckBox Content="Злые старушки" Name="AngryOldLady"/>
+					    <CheckBox Content="Нет стульев" Name="NoChairs"/>
+					    <CheckBox Content="Упоротый персонал" Name="RetardedTeller"/>
+					    <CheckBox Content="Назад в СССР" Name="UssrStyle"/>
+                        <CheckBox Content="Грабеж в процессе" Name="RobberyInProgress"/>
+                    </StackPanel>
+
+                    <Button Content="Добавить фотографию" Name="SelectPhotoButton" Click="SelectPhotoButton_Click"/>
                 </StackPanel>
-
-			</StackPanel>
         	</ScrollViewer>
         </Grid>
     </Grid>

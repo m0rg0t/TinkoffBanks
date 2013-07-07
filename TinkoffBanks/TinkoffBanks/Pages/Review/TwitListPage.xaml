@@ -70,7 +70,7 @@
                 HorizontalContentAlignment="Left" HorizontalAlignment="Left" EmptyContent="Нет новостей">
                 <telerikData:RadJumpList.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="15,20,0,0" Width="Auto">
+                        <Grid Margin="15,20,0,5" Width="Auto">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
@@ -80,7 +80,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding CreatedAtShortDate}" TextWrapping="Wrap" />
-                            <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding UserName}" TextWrapping="Wrap" />
+                            <TextBlock Grid.Column="1" Grid.Row="0" Margin="10,0,0,0" Text="{Binding UserName}" TextWrapping="Wrap" />
                             <!--<Image Grid.Column="0" Width="108" Source="{Binding Image}" VerticalAlignment="Top" />-->
                             <Image Source="{Binding ProfileImage}" Grid.Column="0" Width="48" Margin="3,5,3,3" 
                                        Grid.Row="1"/>
