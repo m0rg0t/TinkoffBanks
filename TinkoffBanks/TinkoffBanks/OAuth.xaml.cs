@@ -5,6 +5,8 @@ using System.Windows.Navigation;
 using LinqToTwitter;
 using Microsoft.Phone.Controls;
 using TinkoffBanks.ViewModel;
+using Coding4Fun.Toolkit.Controls;
+using System.Windows.Controls;
 
 namespace TinkoffBanks
 {
@@ -100,6 +102,39 @@ namespace TinkoffBanks
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void PrivacyPolicyMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var messagePrompt = new MessagePrompt
+                {
+                    Title = "Политика конфиденциальности",
+                    Body = new TextBlock
+                    {
+                        Text = "Приложение не собирает никаких данных без вашего ведома.\nДанные о местоположении пользователя не связываются с данными самого пользователя и используются только для получения данных, соответствующих местоположению пользователя.\nПриложение не собирает и не хранит информацию, которая связана с определенным именем. Мы также делаем все возможное, чтобы обезопасить хранимые данные.\nПринимая условия, которые включают эту политику вы соглашаетесь с данной политикой конфиденциальности.\nКонтакты m0rg0t.Anton@gmail.com",
+                        MaxHeight = 500,
+                        TextWrapping = TextWrapping.Wrap
+                    },
+                    IsAppBarVisible = false,
+                    IsCancelVisible = false
+                };
+                messagePrompt.Show();
+            }
+            catch { };
+        }
+
+        private void LocationOffMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewModelLocator.MainStatic.GeolocationStatus = false;
+            MessageBox.Show("Геолокация отключена.");
+        }
+
+        private void LocationOnMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewModelLocator.MainStatic.GeolocationStatus = true;
+            MessageBox.Show("Геолокация включена.");
         }
     }
 }
