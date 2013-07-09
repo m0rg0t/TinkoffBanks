@@ -18,16 +18,6 @@
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>-->
 
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar Mode="Minimized">
-            <shell:ApplicationBar.MenuItems>                
-                <shell:ApplicationBarMenuItem x:Name="PrivacyPolicyMenuItem" Text="Политика конфиденциальности" Click="PrivacyPolicyMenuItem_Click"/>
-                <shell:ApplicationBarMenuItem x:Name="LocationOffMenuItem" Text="Отключить геолокацию" Click="LocationOffMenuItem_Click"/>
-                <shell:ApplicationBarMenuItem x:Name="LocationOnMenuItem" Text="Включить геолокацию" Click="LocationOnMenuItem_Click"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>

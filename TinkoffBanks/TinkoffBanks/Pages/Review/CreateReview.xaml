@@ -74,7 +74,7 @@
                         <CheckBox Content="Грабеж в процессе" Name="RobberyInProgress"/>
                     </StackPanel>
 
-                    <Button Content="Добавить фотографию" Name="SelectPhotoButton" Visibility="Collapsed" Click="SelectPhotoButton_Click"/>
+                    <Button Content="Добавить фотографию" Name="SelectPhotoButton" Click="SelectPhotoButton_Click"/>
                 </StackPanel>
         	</ScrollViewer>
         </Grid>
