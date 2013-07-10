@@ -3,6 +3,8 @@
 
 "Где хорошие банки?" - приложение для Windows Phone
 
+Ссылка на приложение в магазине: http://www.windowsphone.com/s?appid=5f6e80f6-6460-4306-9985-6435b9db65c5
+
 Приложение разрабатываемое в рамках конкурса https://www.tcsbank.ru/challenge/mobile/index.html
 
 Видео с примером работы приложения:
