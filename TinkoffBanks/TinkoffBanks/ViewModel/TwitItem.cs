@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight;
 using GART.Data;
 using System;
 using System.Collections.Generic;
@@ -296,7 +296,7 @@ namespace TinkoffBanks.ViewModel
             }
             get
             {
-                return "Закрыто касс: " + Avail.ToString();
+                return "Закрыто касс: " + Closed.ToString();
             }
         }
 
@@ -325,6 +325,16 @@ namespace TinkoffBanks.ViewModel
         }
 
         public void ParseRawContent() {
+            // Each assignment represents a complete review, not a patch to the old one.
+            AngryOldLady = false;
+            NoChairs = false;
+            RetardedTeller = false;
+            UssrStyle = false;
+            RobberyInProgress = false;
+            Inline = 0;
+            Avail = 0;
+            Closed = 0;
+            MToWait = 0;
             string data = RawContent;
             //data = "#ihatetowait @eurobank #5inline #15mtowait #5avail #robberyinprogress стульчик бы хоть поставили";
             data = data.Replace("#ihatetowait","");
@@ -501,3 +511,4 @@ namespace TinkoffBanks.ViewModel
         public double Lon { get; set; }
     }
 }
+
